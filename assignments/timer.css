@@ -1,0 +1,24 @@
+.stopwatch {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    width: 400px;
+    height: 201px;
+    border-color: 10px solid green;
+    margin-top: 80px;
+    background-color: aqua;
+    color: blue;
+    padding: 90px;
+}
+#displayTime {
+    font-size: 3em;
+    margin: 20px;
+}
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+}
+body {
+    justify-items: center;
+    justify-content: center;
+}
