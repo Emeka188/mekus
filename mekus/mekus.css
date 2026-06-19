@@ -63,7 +63,7 @@ main {
     font-weight: 800;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #ffffff;
+    color: var(--text);
 }
 
 nav {
@@ -135,7 +135,7 @@ nav a:hover {
     place-items: center;
     border-radius: 25px;
     background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04));
-    color: #ffffff;
+    color: var(--text);
     font-size: 3.5rem;
     font-weight: 800;
     box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 20px 60px rgba(0, 0, 0, 0.35);
@@ -145,14 +145,14 @@ nav a:hover {
     position: absolute;
     inset: -14px;
     border-radius: 30px;
-    box-shadow: 0 0 0 1px rgba(96, 216, 255, 0.2), 0 0 40px rgba(96, 216, 255, 0.45);
+    box-shadow: 0 0 0 1px var(--accent-soft), 0 0 40px rgba(96, 216, 255, 0.45);
 }
 
 .hero h1 {
     margin: 0;
     font-size: clamp(3rem, 4vw, 4.5rem);
     letter-spacing: -0.05em;
-    color: #ffffff;
+    color: var(--text);
 }
 
 .role {
@@ -294,6 +294,19 @@ body.light-theme .cv p {
     color: #475569;
 }
 
+/* Ensure important headings and avatar are readable in light theme */
+body.light-theme .brand,
+body.light-theme .hero h1,
+body.light-theme .avatar,
+body.light-theme .p-info h4,
+body.light-theme .projects h2 {
+    color: var(--text);
+}
+
+body.light-theme .neon-ring {
+    box-shadow: 0 0 0 1px rgba(79,70,229,0.08), 0 0 20px rgba(79,70,229,0.06);
+}
+
 body.light-theme .project:hover {
     border-color: rgba(79, 70, 229, 0.18);
 }
@@ -321,7 +334,7 @@ body.light-theme .project:hover {
     place-items: center;
     border-radius: 22px;
     background: rgba(96, 216, 255, 0.12);
-    color: #a4e9ff;
+    color: var(--text);
     font-size: 1.7rem;
     font-weight: 800;
 }
@@ -450,6 +463,13 @@ body.light-theme .project:hover {
     }
 
     .site-header {
+
+    /* Give a bit more left margin on smaller phone screens */
+    .site-header,
+    .container {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
         gap: 1rem;
         flex-wrap: wrap;
     }
@@ -561,5 +581,10 @@ body.light-theme .project:hover {
     .avatar-outer {
         width: 96px;
         height: 96px;
+    }
+
+    .container {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
     }
 }
