@@ -2,10 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script>
-            (function(){try{const PROD_BASE='/perfumes/';const host=location.hostname||'';const base=document.createElement('base');base.href=(host.endsWith('github.io')||location.pathname.startsWith(PROD_BASE))?PROD_BASE:'./';document.head.appendChild(base);}catch(e){}})();
-        </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        (function(){
+            try {
+                const PROD_BASE = '/perfumes/';
+                const host = location.hostname || '';
+                const base = document.createElement('base');
+                base.href = (host.endsWith('github.io') || location.pathname.startsWith(PROD_BASE)) ? PROD_BASE : './';
+                document.head.appendChild(base);
+            } catch (e) {
+                console.warn(e);
+            }
+        })();
+    </script>
     <title>Analog Clock - Full Featured</title>
     <link rel="stylesheet" href="analog-clock.css">
 </head>
@@ -13,15 +23,15 @@
     <div class="clock-wrapper">
         <div class="clock-container">
             <canvas id="clockCanvas" width="400" height="400"></canvas>
-            <div class="welcome-message" id="welcomeMessage" aria-live="polite" style="position:absolute; top:18px; left:18px; font-weight:700; color:#333;"> </div>
+            <div class="welcome-message" id="welcomeMessage" aria-live="polite"></div>
             <div class="digital-display" id="digitalDisplay">12:00:00</div>
         </div>
-        
+
         <button id="controlsToggle" class="controls-toggle" aria-expanded="true">Show/Hide Controls</button>
 
         <div class="controls-panel">
             <h2>Clock Controls</h2>
-            
+
             <div class="control-group">
                 <label for="themeSelect">Theme:</label>
                 <select id="themeSelect">
@@ -31,50 +41,31 @@
                     <option value="neon">Neon</option>
                 </select>
             </div>
-            
+
             <div class="control-group">
                 <label for="speedControl">Speed:</label>
-                <input type="range" <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PROGRESS BAR</title>
-</head>
-<style>
-.control-group {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 14px;
-    color: #555;
-}
-</style>
-<body>
-    
-            <div class="control-group">
-                    <label for="speedControl">Speed:</label>
-                    <input type="range" id="speedControl" min="0.5" max="3" step="0.5" value="1">
-                    <span id="speedValue">1x</span>
-            </div>         
+                <input type="range" id="speedControl" min="0.5" max="3" step="0.5" value="1">
+                <span id="speedValue">1x</span>
+            </div>
+
             <div class="control-group">
                 <label>
                     <input type="checkbox" id="analogToggle" checked> Show Analog
                 </label>
             </div>
-            
+
             <div class="control-group">
                 <label>
                     <input type="checkbox" id="digitalToggle" checked> Show Digital
                 </label>
             </div>
-            
+
             <div class="control-group">
                 <label>
                     <input type="checkbox" id="secondsToggle" checked> Show Seconds Hand
                 </label>
             </div>
-            
+
             <div class="control-group">
                 <label for="timeZoneSelect">Timezone:</label>
                 <select id="timeZoneSelect">
@@ -87,19 +78,19 @@
                     <option value="jst">JST (UTC+9)</option>
                 </select>
             </div>
-            
-            <div class="control-group">
+
+            <div class="control-group button-row">
                 <button id="resetBtn" class="btn-primary">Reset</button>
                 <button id="pauseBtn" class="btn-secondary">Pause</button>
             </div>
-            
+
             <div class="info-box">
                 <p>Current Time: <span id="currentTime">--:--:--</span></p>
                 <p>Timezone: <span id="currentTZ">Local</span></p>
             </div>
         </div>
     </div>
-    
+
     <script src="analog-clock.js"></script>
 </body>
 </html>

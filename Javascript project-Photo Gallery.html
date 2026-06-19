@@ -2,65 +2,147 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Photo Gallery</title>
+    <style>
+        body {
+            background: #111;
+            color: #f8fafc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 24px;
+        }
 
-<style>
+        #container {
+            max-width: 1180px;
+            width: 100%;
+        }
 
-  body {
-    background: #222;
-    margin-top: 20px;
-    font-family: arial;
-    color: white;
+        h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
 
-  }  
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1.35fr 0.85fr;
+            gap: 24px;
+        }
 
-  .thumbnails img {
+        .preview {
+            background: #171717;
+            border: 1px solid #2d2d2d;
+            border-radius: 22px;
+            padding: 18px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+        }
 
-    height: 80px;
-    border: 4px solid #555;
-    padding: 1px;
-    margin: o 10px 10px 0;
+        .preview img {
+            width: 100%;
+            height: auto;
+            border-radius: 18px;
+            object-fit: cover;
+            border: 3px solid #32323f;
+        }
 
-  }
+        .caption {
+            margin-top: 12px;
+            color: #94a3b8;
+            font-size: 0.98rem;
+        }
 
-  .thumbnails img:hover {
+        .thumbnails {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
 
-   border: 4px solid #00ccff;
+        .thumbnails img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 16px;
+            border: 3px solid #27272a;
+            cursor: pointer;
+            transition: transform 0.25s ease, border-color 0.25s ease;
+        }
 
-  }
+        .thumbnails img:hover,
+        .thumbnails img.active {
+            border-color: #38bdf8;
+            transform: translateY(-2px);
+        }
 
-  .preview img {
+        @media (max-width: 900px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
 
-  border: 4px solid #444;
-  padding: 1px;
-  width: 800px;
+            .thumbnails {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
 
-  }
+        @media (max-width: 640px) {
+            .thumbnails {
+                grid-template-columns: 1fr 1fr;
+            }
 
-</style>
+            .preview img {
+                max-height: 520px;
+            }
+        }
 
+        @media (max-width: 480px) {
+            body {
+                padding: 12px;
+            }
+
+            .thumbnails {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
+    <div id="container">
+        <h1>My Web Page Gallery</h1>
 
-<div id="container" align="center">
+        <div class="gallery-grid">
+            <div class="preview">
+                <img id="currentPreview" src="images/bible.jpg" alt="Bible study image">
+                <div class="caption" id="previewCaption">Bible study moment</div>
+            </div>
 
-  <h1>My Web Page Gallery</h1>
+            <div class="thumbnails" id="thumbnailList">
+                <img data-src="images/bible.jpg" data-caption="Bible study moment" alt="Bible study" class="active">
+                <img data-src="images/economic.jpg" data-caption="Economic visual" alt="Economic visualization">
+                <img data-src="images/family.jpg" data-caption="Family scene" alt="Family">
+                <img data-src="images/JW.jpg" data-caption="JW project image" alt="JW project">
+                <img data-src="images/videos-1.jpg" data-caption="Video project thumbnail" alt="Video project">
+            </div>
+        </div>
+    </div>
 
-  <br />
+    <script>
+        const previewImage = document.getElementById('currentPreview');
+        const previewCaption = document.getElementById('previewCaption');
+        const thumbnails = document.querySelectorAll('.thumbnails img');
 
-  <div class="thumbnails">
-    <img onmouseover="preview.src=img1.src" name="img1" src="img1.jpg" alt="Image 1"/>
-    <img onmouseover="preview.src=img2.src" name="img2" src="img2.jpg" alt="Image 2"/>
-    <img onmouseover="preview.src=img3.src" name="img3" src="img3.jpg" alt="Image 3"/>
-    <img onmouseover="preview.src=img4.src" name="img4" src="img4.jpg" alt="Image 4"/>
-    <img onmouseover="preview.src=img5.src" name="img5" src="img5.jpg" alt="Image 5"/>
-  </div>
-
-  <div class="preview" align="center">
-    <img name="preview" src="img1.jpg"/>
-  </div>
-
-</div>
-
+        thumbnails.forEach((thumb) => {
+            thumb.addEventListener('click', () => {
+                thumbnails.forEach((item) => item.classList.remove('active'));
+                thumb.classList.add('active');
+                previewImage.src = thumb.dataset.src;
+                previewImage.alt = thumb.dataset.caption;
+                previewCaption.textContent = thumb.dataset.caption;
+            });
+        });
+    </script>
 </body>
 </html>

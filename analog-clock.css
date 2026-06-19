@@ -32,13 +32,27 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 440px;
 }
 
 #clockCanvas {
     display: block;
-    max-width: 100%;
+    width: 100%;
+    max-width: 420px;
     height: auto;
+    aspect-ratio: 1 / 1;
     filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.15));
+}
+
+.digital-display {
+    position: absolute;
+    bottom: 30px;
+    font-size: 28px;
+    font-weight: 600;
+    color: #333;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 2px;
+    opacity: 0.8;
 }
 
 .digital-display {
@@ -193,6 +207,13 @@ body {
 }
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+    .clock-wrapper {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+}
+
 @media (max-width: 768px) {
     .clock-wrapper {
         grid-template-columns: 1fr;
@@ -213,6 +234,7 @@ body {
     
     #clockCanvas {
         width: 100%;
+        max-width: none;
     }
     
     .digital-display {
@@ -226,7 +248,7 @@ body {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 580px) {
     body {
         padding: 10px;
     }
@@ -254,6 +276,11 @@ body {
     #speedValue {
         width: 100%;
         text-align: center;
+    }
+    
+    .digital-display {
+        bottom: 20px;
+        font-size: 18px;
     }
 }
 
