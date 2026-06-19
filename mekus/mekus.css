@@ -263,6 +263,11 @@ body.light-theme .site-header {
     border-bottom-color: rgba(15, 23, 42, 0.08);
 }
 
+/* Remove the decorative overlay in light theme to preserve text contrast */
+body.light-theme::before {
+    background: none;
+}
+
 body.light-theme .btn {
     background: linear-gradient(135deg, rgba(79, 70, 229, 0.28), rgba(79, 70, 229, 0.12));
     color: #0e1726;
@@ -488,6 +493,8 @@ body.light-theme .project:hover {
     .container {
         margin-top: 1rem;
         width: calc(100% - 1.2rem);
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 
     .hero h1 {
